@@ -1,0 +1,1 @@
+# this function is for filter the characteristic data

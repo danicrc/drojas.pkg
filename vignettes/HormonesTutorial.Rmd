@@ -1,0 +1,13 @@
+---
+title: "HormonesTutorial"
+author: "Dani Rojas"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+You can use this package to study the concentration of hormones in one organism. For the package, I use the hormone concentration of sea turtles gravids and no-gravida.

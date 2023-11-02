@@ -1,0 +1,9 @@
+* installing *source* package ‘rojas.pkg’ ...
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+Error in data %>% select({ : could not find function "%>%"
+Error: unable to load R code in package ‘rojas.pkg’
+Execution halted
+ERROR: lazy loading failed for package ‘rojas.pkg’
+* removing ‘/cloud/project/Rojas.pkg/rojas.pkg.Rcheck/rojas.pkg’
