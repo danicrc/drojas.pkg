@@ -19,6 +19,15 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/filter_H.html</loc>
+  </url>
+  <url>
+    <loc>/reference/function_DR.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/remove_nas.html</loc>
   </url>
 </urlset>

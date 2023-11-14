@@ -4,22 +4,26 @@
 #' Returns hormone concentration of the filter data request. 
 #' 
 #'@param data in the date is expecting that each hormone is in each column
-#' @param column_3 concentration of an hormone
-#' @param column_4 concentration of an hormone
-#' @return filter columns with the concentration of VTG and E2 (numeric)
+#'@param columns include the hormones that you will be selecting for the function
+#'@return filter columns with the concentration of VTG and E2 (numeric)
 #' 
 #'@export
 
 
-filter_H <- function(data, column_3, column_4){
-  if(is.numeric({{column_3}}) == TRUE) {
-  filter <- data %>% 
-    select({{column_3}}, {{column_4}})
-  return(filter)
+filter_H <- function(data, columns) {
+   if(is.numeric(columns)) {
+   print("NO")
   } else {
-    print("NO")
-  }
+    reading <- data %>%
+    select(all_of({columns}))
+     return(reading)
+   }
 }
+
+columns <- c("VTG", "E2")
+filter_H(Data_RojasC_1_, columns)
+
+
 
 #filter_H(Data_RojasC, VTG, E2)
 
