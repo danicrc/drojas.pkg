@@ -20,10 +20,10 @@ filter_H <- function(data, columns) {
    }
 }
 
-columns <- c("VTG", "E2")
-filter_H(Data_RojasC_1_, columns)
+#columns <- c("VTG", "E2")
+#filter_H(Data_RojasC_1_, columns)
 
 
 
-#filter_H(Data_RojasC, VTG, E2)
+#filter_H(Data_RojasC_1_, VTG, E2)
 

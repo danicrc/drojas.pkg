@@ -10,7 +10,7 @@
 #'@export
 
 
-function_DR <- function(data, columns) {
+Select_data <- function(data, columns) {
     if(is.numeric (columns)){
     print("is numeric")
   } else {
@@ -20,8 +20,8 @@ function_DR <- function(data, columns) {
 }
 
 
-columns <- c("VTG", "E2", "Testosterone", "BHB")
-function_DR(Data_RojasC_1_, columns)
+#columns <- c("VTG", "E2", "Testosterone", "BHB")
+#Select_data (Data_RojasC_1_, columns)
 
 
-#function_DR(Data_RojasC, VTG, E2, Testosterone, BHB)
+#function_DR(Data_RojasC_1_, VTG, E2, Testosterone, BHB)

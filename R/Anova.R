@@ -1,1 +1,2 @@
 # this function is for comparing categorical data. 
+

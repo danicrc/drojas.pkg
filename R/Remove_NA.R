@@ -6,7 +6,7 @@
 #' @param data must be a data set that contains character data. I am using a sea turtle hormone data set. 
 #' @param columns must include character data
 #' @return the data clean without NAs (character)
-#' 
+#' @importFrom magrittr %>% 
 #'@export
 
 
@@ -21,6 +21,6 @@ if(anyNA(clean) == TRUE) {
 }
 }
 
-columns <- c("Follicles", "Note")
-remove_nas(Data_RojasC_1_, columns)
+#columns <- c("Follicles", "Note")
+#remove_nas(Data_RojasC_1_, columns)
 
