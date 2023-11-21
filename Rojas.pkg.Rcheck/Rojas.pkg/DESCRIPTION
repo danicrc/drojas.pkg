@@ -1,0 +1,23 @@
+Package: Rojas.pkg
+Title: An R package for processing sea turtle hormones data
+Version: 0.1
+Authors@R: c(
+  person(given = "Dani", 
+        family = "Rojas",
+        role = c ("cre", "aut"),
+        email = "daniela.rojas@selu.edu")
+        )
+Description: An R package to process hormone data. This package accepts numerical inputs and character values that allow users to calculate a variety of functions. Users can use this package can use to understand the relationship between hormone concentration before and after the sea turtle nesting period.
+License: MIT + file LICENSE
+Depends: R (>= 2.10)
+Imports: tidyverse, broom, dplyr, magrittr
+RoxygenNote: 7.2.3
+Suggests: knitr, rmarkdown
+VignetteBuilder: knitr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+NeedsCompilation: no
+Packaged: 2023-11-21 20:37:36 UTC; r2159915
+Author: Dani Rojas [cre, aut]
+Maintainer: Dani Rojas <daniela.rojas@selu.edu>
+Built: R 4.3.1; ; 2023-11-21 20:37:38 UTC; unix

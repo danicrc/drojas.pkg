@@ -1,13 +1,13 @@
-#' This function is for select specific data 
+#' This function is for select specific data from the data set.
 #' 
 #' Use for select the hormone concentration columns that are in data set.
 #' Returns concentration values of the selected hormones.
 #'  
 #' @param data must be a data set that contains numeric values in some columns.
-#' @param columns include the hormones that you will be selecting for the function
+#' @param columns include the hormones that you will be selecting for the function. You could choose the hormones that you want.
 #' @return columns with the concentration of the hormones (numeric)
 #' 
-#'@export
+#' @export
 
 
 Select_data <- function(data, columns) {
@@ -20,8 +20,4 @@ Select_data <- function(data, columns) {
 }
 
 
-#columns <- c("VTG", "E2", "Testosterone", "BHB")
-#Select_data (Data_RojasC_1_, columns)
 
-
-#function_DR(Data_RojasC_1_, VTG, E2, Testosterone, BHB)

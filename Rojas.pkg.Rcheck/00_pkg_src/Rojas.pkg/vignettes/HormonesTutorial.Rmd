@@ -1,0 +1,91 @@
+---
+title: "HormonesTutorial"
+author: "Dani Rojas"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This package is used for analyzing hormone data
+
+```{r}
+devtools::install_github("danicrc/drojas.pkg")
+#install.package (tidyverse)
+#install.package (ggplot2)
+library (tidyverse)
+library(ggplot2)
+```
+
+In this tutorial, we will be using the sea turtle hormone data collected from gravid and non-gravid loggerhead turtles.
+
+```{r, eval=FALSE}
+#install.packages ("googlesheets4")
+library(googlesheets4)
+googlesheets4::gs4_deauth()
+hormones <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
+```
+
+You can use this package to study the concentration of hormones in one organism and understand the relation between them. For the package, I use the hormone concentration of sea turtles gravid and no-gravida. The hormone data should be organized in a Google spreadsheet, and each column should have the hormone concentration separately.
+
+#How to use the functions in this package.
+
+#Cleaning and organizing the data
+
+The first function of this hormone package is a function that cleans the data by removing NA. This function is called Remove_NA and it requires the data set and the column that you wish to clean should have character data. You will run the function and you will need to create a variable called "columns" and include the data that you wish to clean using quotation marks. At the end to run the function you will use the variable that you created. 
+
+
+```{r}
+library (Rojas.pkg)
+columns <- c("Follicles", "Note")
+remove_nas(Data_RojasC_1_, columns)
+```
+
+#Selecting and manipulated the data 
+
+The second function is for selected specific data sets. This function is called Select and it requires the data and the columns that you wish to select. You will run the function and you will need to create a variable called "columns" and include the data that you wish to select using quotation marks. At the end to run the function you will use the variable that you created. This function will show you the data that you select. 
+
+```{r}
+library (Rojas.pkg)
+columns <- c("VTG", "E2", "Testosterone", "BHB")
+Select_data (Data_RojasC_1_, columns)
+```
+
+#Statistical Analysis with a linear model
+
+The third function is used to make a linear model statistical analysis. This function is called Linear_model in order to work you must have numeric data in your data set. If you have character data after you run the function you will have a message "Ziggy". Also, after running the function you should select the predictor (column_1) and the response variable (column_2). Remember to use the quotation mark.  
+
+```{r}
+library(Rojas.pkg)
+model_ln(Data_RojasC_1_, "Testosterone", "E2")
+```
+
+#Plotting a bar graph
+
+The four function is used to plot a bar graph. This function is called Bar_plot. In order to work make sure that your column_1 "is numeric". If you are using character data in"column_1" the function with let you know by showing an "error" after you run it. This function will show you a bar graph with the data that you selected. 
+
+```{r}
+library (Rojas.pkg)
+Plot(Data_RojasC_1_, "BHB", "Note")
+```
+
+#Ploting a graph for the visialization of the data
+
+Function five is used to plot a graph that allows us to compare the relation between hormones. This function is called Plot_two. In order for the function to work both columns should be numerical. If you include characteristic data this function will be printing the word "turtle". This function will show the relation between two hormone concentrations. 
+
+```{r}
+library (Rojas.pkg)
+Plot_two(Data_RojasC_1_, "VTG", "BHB")
+```
+
+#
+
+```{r}
+library (Rojas.pkg)
+columns <- c("VTG", "E2")
+filter_H(Data_RojasC_1_, columns)
+
+
+```

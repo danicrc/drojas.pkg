@@ -3,11 +3,11 @@
 #' Use for filter the hormones concentration that is on the columns in the data set.
 #' Returns hormone concentration of the filter data request. 
 #' 
-#'@param data in the date is expecting that each hormone is in each column
-#'@param columns include the hormones that you will be selecting for the function
-#'@return filter columns with the concentration of VTG and E2 (numeric)
+#' @param data must be a data set that contains character data. Hormone data should be organized in each column.
+#' @param columns include the hormones that you will be selecting for the function. You can include the hormones that you want to filtering. 
+#' @return filter columns with the concentration of VTG and E2 (numeric)
 #' 
-#'@export
+#' @export
 
 
 filter_H <- function(data, columns) {
@@ -17,13 +17,6 @@ filter_H <- function(data, columns) {
     reading <- data %>%
     select(all_of({columns}))
      return(reading)
-   }
+  }
 }
-
-#columns <- c("VTG", "E2")
-#filter_H(Data_RojasC_1_, columns)
-
-
-
-#filter_H(Data_RojasC_1_, VTG, E2)
 

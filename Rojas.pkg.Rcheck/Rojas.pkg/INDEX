@@ -1,0 +1,4 @@
+Select_data             This function is for select specific data
+filter_H                This function is for filtering data
+remove_nas              This function is for removing NAs in specific
+                        character data

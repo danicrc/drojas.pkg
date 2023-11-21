@@ -7,7 +7,7 @@
 #' @param columns must include character data
 #' @return the data clean without NAs (character)
 #' @importFrom magrittr %>% 
-#'@export
+#' @export
 
 
 
@@ -20,7 +20,3 @@ if(anyNA(clean) == TRUE) {
   return(clean)
 }
 }
-
-#columns <- c("Follicles", "Note")
-#remove_nas(Data_RojasC_1_, columns)
-
