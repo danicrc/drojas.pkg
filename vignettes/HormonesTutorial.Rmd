@@ -73,11 +73,11 @@ Plot(Data_RojasC_1_, "BHB", "Note")
 
 #Ploting a graph for the visialization of the data
 
-Function five is used to plot a graph that allows us to compare the relationship between hormones. This function is called Plot_two. In order for the function to work both columns should be numerical. If you include characteristic data this function will be printing the word "turtle". This function will show the relationship  between two hormone concentrations. 
+Function five is used to plot a graph that allows us to compare the relationship between hormones by using gravid and non-gravid females. This function is called Plot_two. In order for the function to work two columns should be numerical and one characteristic data. the column_1 should be numerical if you include characteristic data this function will print the word "turtle". This function will show the relationship between two hormone concentrations in gravid and non-gravid turtles.  
 
 ```{r}
 library (Rojas.pkg)
-Plot_two(Data_RojasC_1_, "VTG", "BHB")
+Plot_two(Data_RojasC_1_, "VTG", "BHB", "Note")
 ```
 
 #Filtering and compare specific data

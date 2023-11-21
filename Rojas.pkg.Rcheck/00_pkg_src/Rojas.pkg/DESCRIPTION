@@ -17,6 +17,6 @@ VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 NeedsCompilation: no
-Packaged: 2023-11-21 20:37:36 UTC; r2159915
+Packaged: 2023-11-21 21:02:49 UTC; r2159915
 Author: Dani Rojas [cre, aut]
 Maintainer: Dani Rojas <daniela.rojas@selu.edu>
