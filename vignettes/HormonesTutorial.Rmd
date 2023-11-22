@@ -13,8 +13,8 @@ This package is used for analyzing hormone data.
 
 ```{r}
 devtools::install_github("danicrc/drojas.pkg")
-#install.package (tidyverse)
-#install.package (ggplot2)
+#install.packages (tidyverse)
+#install.packages (ggplot2)
 library (tidyverse)
 library(ggplot2)
 ```
@@ -55,11 +55,11 @@ Select_data (Data_RojasC_1_, columns)
 
 #Statistical Analysis with a linear model
 
-The third function is used to make a linear model statistical analysis. This function is called Linear_model in order to work you must have numerical data in your data set. If you have character data after you run the function you will have a message "Ziggy". Also, after running the function you should select the predictor (column_2) and the response variable (column_1). Remember to use quotation marks.  
+The third function is used to make a linear model statistical analysis. This function is called Linear_model in order to work you must have numerical data in your data set. If you have character data after you run the function you will have a message "Ziggy". Also, after running the function you should select the predictor (column_2) and the response variable (column_1). The function will show you a linear model as a result. Remember to use quotation marks.  
 
 ```{r}
 library(Rojas.pkg)
-model_ln(Data_RojasC_1_, "Testosterone", "E2")
+model_ln(Data_RojasC_1_, "VTG", "BHB")
 ```
 
 #Plotting a bar graph
@@ -73,7 +73,7 @@ Plot(Data_RojasC_1_, "BHB", "Note")
 
 #Ploting a graph for the visialization of the data
 
-Function five is used to plot a graph that allows us to compare the relationship between hormones by using gravid and non-gravid females. This function is called Plot_two. In order for the function to work two columns should be numerical and one characteristic data. the column_1 should be numerical if you include characteristic data this function will print the word "turtle". This function will show the relationship between two hormone concentrations in gravid and non-gravid turtles.  
+Function five plot a graph that allows us to compare the relationship between hormones by using gravid and non-gravid females. This function is called Plot_two. In order for the function to work two columns should be numerical and one characteristic data. the column_1 should be numerical if you include characteristic data this function will print the word "turtle". This function will show the relationship between two hormone concentrations in gravid and non-gravid turtles.  
 
 ```{r}
 library (Rojas.pkg)
