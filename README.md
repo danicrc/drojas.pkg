@@ -43,54 +43,71 @@ This function is called Filter and it requires the data and the columns that you
 In order to use this package you will need to download all the packages mentioned below. Additionally, you will need to download the "Rojas.pkg" and the data spreadsheet that includes the sea turtle's hormone concentrations, the name of the data set is RojasC_1_. You only need to download the packages once, the information below is only indicating the packages that you need to install to try each function. Remember to use "library" to confirm that the packages are installed. 
 
 ```{r} 
-install.packages(Rojas.pkg)
-install.packages(tidyverse)
-install.packages (ggplot2)
-```{r}
+#install.packages(Rojas.pkg)
+#install.packages(tidyverse)
+#install.packages (ggplot2)
+library(Rojas.pkg)
+library(tidyverse)
+library(ggplot2)
+```
 
 #Cleaning and organizing the data
 
 ```{r}
-install.packages(Rojas.pkg)
-install.packages(tidyverse)
-```{r}
+#install.packages(Rojas.pkg)
+#install.packages(tidyverse)
+library(Rojas.pkg)
+library(tidyverse)
+```
 
 #Selecting and manipulated the data
 
 ```{r}
-install.packages(Rojas.pkg)
-install.packages(tidyverse)
-```{r}
+#install.packages(Rojas.pkg)
+#install.packages(tidyverse)
+library(Rojas.pkg)
+library(tidyverse)
+```
 
 #Statistical Analysis with a linear model
 
 ```{r}
-install.packages(Rojas.pkg)
-install.packages(tidyverse)
-```{r}
+#install.packages(Rojas.pkg)
+#install.packages(tidyverse)
+library(Rojas.pkg)
+library(tidyverse)
+```
 
 #Plotting a bar graph
 
 ```{r} 
-install.packages(Rojas.pkg)
-install.packages(tidyverse)
-install.packages (ggplot2)
-```{r}
+#install.packages(Rojas.pkg)
+#install.packages(tidyverse)
+#install.packages (ggplot2)
+library(Rojas.pkg)
+library(tidyverse)
+library(ggplot2)
+```
 
 #Ploting a graph for the visialization of the data
 
 ```{r}
-install.packages(Rojas.pkg)
-install.packages(tidyverse)
-install.packages (ggplot2)
-```{r}
+#install.packages(Rojas.pkg)
+#install.packages(tidyverse)
+#install.packages (ggplot2)
+library(Rojas.pkg)
+library(tidyverse)
+library(ggplot2)
+```
 
 #Filtering and compare specific data
 
 ```{r}
-install.packages(Rojas.pkg)
-install.packages(tidyverse)
-```{r}
+#install.packages(Rojas.pkg)
+#install.packages(tidyverse)
+library(Rojas.pkg)
+library(tidyverse)
+```
 
 #This package is for reading the google Sheets data and downloading the data set need to test the functions of this package. 
 
@@ -99,7 +116,7 @@ install.packages ("googlesheets4")
 library(googlesheets4)
 googlesheets4::gs4_deauth()
 hormones <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
-```{r}
+```
 
 
 #Usage 
@@ -111,7 +128,7 @@ install.packages ("googlesheets4")
 library(googlesheets4)
 googlesheets4::gs4_deauth()
 hormones <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
-```{r}
+```
 
 
 #Cleaning and organizing the data
@@ -119,39 +136,39 @@ hormones <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxX
 ```{r}
 columns <- c("Follicles", "Note")
 remove_nas(Data_RojasC_1_, columns)
-```{r}
+```
 
 #Selecting and manipulated the data 
 
 ```{r}
 columns <- c("VTG", "E2", "Testosterone", "BHB")
 Select_data (Data_RojasC_1_, columns)
-```{r}
+```
 
 #Statistical Analysis with a linear model
 
 ```{r}
 model_ln(Data_RojasC_1_, "VTG", "BHB")
-```{r}
+```
 
 #Plotting a bar graph
 
 ```{r}
 Plot(Data_RojasC_1_, "BHB", "Note")
-```{r}
+```
 
 #Ploting a graph for the visialization of the data
 
 ```{r}
 Plot_two(Data_RojasC_1_, "VTG", "BHB", "Note")
-```{r}
+```
 
 #Filtering and compare specific data
 
 ```{r}
 columns <- c("VTG", "E2")
 filter_H(Data_RojasC_1_, columns)
-```{r}
+```
 
 If you want to know more about this package you can go to this link in github
 
