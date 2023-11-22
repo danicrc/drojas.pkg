@@ -21,7 +21,7 @@ library(ggplot2)
 
 In this tutorial, we will be using the sea turtle hormone data collected from gravid and non-gravid loggerhead turtles.
 
-```{r, eval=FALSE}
+```{r}
 #install.packages("googlesheets4")
 library(googlesheets4)
 googlesheets4::gs4_deauth()
@@ -43,6 +43,7 @@ library(Rojas.pkg)
 columns <-c("Follicles", "Note")
 remove_nas(Data_RojasC, columns)
 ```
+
 
 #Selecting and manipulated the data 
 

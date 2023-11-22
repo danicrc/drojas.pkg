@@ -40,7 +40,7 @@ This function is called Filter and it requires the data and the columns that you
 
 #nstallation 
 
-In order to use this package you will need to download all the packages mentioned below. Additionally, you will need to download the "Rojas.pkg" and the data spreadsheet that includes the sea turtle's hormone concentrations, the name of the data set is RojasC_1_. You only need to download the packages once, the information below is only indicating the packages that you need to install to try each function. Remember to use "library" to confirm that the packages are installed. 
+In order to use this package you will need to download all the packages mentioned below. Additionally, you will need to download the "Rojas.pkg" and the data spreadsheet that includes the sea turtle's hormone concentrations, the name of the data set is RojasC. You only need to download the packages once, the information below is only indicating the packages that you need to install to try each function. Remember to use "library" to confirm that the packages are installed. 
 
 ```{r} 
 #install.packages(Rojas.pkg)

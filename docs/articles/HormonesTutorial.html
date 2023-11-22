@@ -71,7 +71,7 @@
       <h1 data-toc-skip>HormonesTutorial</h1>
                         <h4 data-toc-skip class="author">Dani Rojas</h4>
             
-            <h4 data-toc-skip class="date">2023-11-14</h4>
+            <h4 data-toc-skip class="date">2023-11-22</h4>
       
       
       <div class="hidden name"><code>HormonesTutorial.Rmd</code></div>
@@ -80,24 +80,187 @@
 
     
     
-<p>Early on in the tutorial, its customary to say something about how to
-install the needed R packages</p>
+<p>This package is used for analyzing hormone data.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"danicrc/drojas.pkg"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Using github PAT from envvar GITHUB_PAT</span></span></code></pre>
-<pre><code><span><span class="co">## Skipping install of 'Rojas.pkg' from a github remote, the SHA1 (100e649e) has not changed since last install.</span></span>
+<pre><code><span><span class="co">## Skipping install of 'Rojas.pkg' from a github remote, the SHA1 (036b26fa) has not changed since last install.</span></span>
 <span><span class="co">##   Use `force = TRUE` to force installation</span></span></code></pre>
-<p>Say something about the needed data. in this tutorial we will be
-using the sea turtle hormone data collected in XXXX loggerhead sea
-turtle</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#install.packages ("googlesheets4")</span></span>
+<code class="sourceCode R"><span><span class="co">#install.packages(tidyverse)</span></span>
+<span><span class="co">#install.packages(ggplot2)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## ── <span style="font-weight: bold;">Attaching core tidyverse packages</span> ──────────────────────── tidyverse 2.0.0 ──</span></span>
+<span><span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">dplyr    </span> 1.1.4     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">readr    </span> 2.1.4</span></span>
+<span><span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">forcats  </span> 1.0.0     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">stringr  </span> 1.5.1</span></span>
+<span><span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">ggplot2  </span> 3.4.4     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tibble   </span> 3.2.1</span></span>
+<span><span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">lubridate</span> 1.9.3     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tidyr    </span> 1.3.0</span></span>
+<span><span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">purrr    </span> 1.0.2</span></span></code></pre>
+<pre><code><span><span class="co">## ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span><span class="co">## <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">filter()</span> masks <span style="color: #0000BB;">stats</span>::filter()</span></span>
+<span><span class="co">## <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">lag()</span>    masks <span style="color: #0000BB;">stats</span>::lag()</span></span>
+<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Use the conflicted package (<span style="color: #0000BB; font-style: italic;">&lt;http://conflicted.r-lib.org/&gt;</span>) to force all conflicts to become errors</span></span></code></pre>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
+<p>In this tutorial, we will be using the sea turtle hormone data
+collected from gravid and non-gravid loggerhead turtles.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#install.packages("googlesheets4")</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a></span><span class="op">)</span></span>
 <span><span class="fu">googlesheets4</span><span class="fu">::</span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_deauth.html" class="external-link">gs4_deauth</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">hormones</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html" class="external-link">read_sheet</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">Data_RojasC</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html" class="external-link">read_sheet</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #00BB00;">✔</span> Reading from <span style="color: #00BBBB;">Data_RojasC</span>.</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BB00;">✔</span> Range <span style="color: #BBBB00;">Data_RojasC</span>.</span></span></code></pre>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Data_RojasC</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 44 × 8</span></span></span>
+<span><span class="co">##    ID     DATE                  VTG E2        Testosterone   BHB Follicles Note </span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> HA4819 2013-03-07 <span style="color: #949494;">00:00:00</span>  35.5 <span style="color: #949494;">&lt;dbl [1]&gt;</span>         915.  0.66 Y         Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> HA4845 2011-03-08 <span style="color: #949494;">00:00:00</span>  58.4 <span style="color: #949494;">&lt;dbl [1]&gt;</span>         840.  1.12 Y         Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> HA4872 2013-03-04 <span style="color: #949494;">00:00:00</span>  41.1 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>022   1.33 Y         Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> W1827  2023-03-05 <span style="color: #949494;">00:00:00</span>  26.6 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>453   1.05 NA        Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> W1833  2003-03-05 <span style="color: #949494;">00:00:00</span>  34.2 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">3</span>321   0.89 NA        Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> W1847  2003-03-04 <span style="color: #949494;">00:00:00</span>  57.8 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>442   0.69 NA        Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> W1899  2003-03-06 <span style="color: #949494;">00:00:00</span>  21.5 <span style="color: #949494;">&lt;dbl [1]&gt;</span>         279   0.4  NA        Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> W1990  2004-03-10 <span style="color: #949494;">00:00:00</span>  23.4 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>892   1.55 NA        Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> X5936  2003-03-06 <span style="color: #949494;">00:00:00</span>  15.1 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>918   0.92 NA        Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> X5969  2003-03-05 <span style="color: #949494;">00:00:00</span>  11.2 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>813   0.71 NA        Grav…</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 34 more rows</span></span></span></code></pre>
 <p>You can use this package to study the concentration of hormones in
-one organism. For the package, I use the hormone concentration of sea
-turtles gravids and no-gravida.</p>
+one organism and understand the relationship between them. For the
+package, I use the hormone concentration of sea turtles gravid and
+no-gravid. The hormone data should be organized in a Google spreadsheet,
+and each column should have the hormone concentration separately.</p>
+<p>#How to use the functions in this package.</p>
+<p>#Cleaning and organizing the data</p>
+<p>The first function of this hormone package is a function that cleans
+the data by removing NAS. This function is called Remove_NA and it
+requires the data set and the column that you wish to clean which should
+be character data. You will run the function and you will need to create
+a variable called “columns” and include the data that you wish to clean
+using quotation marks. At the end to run the function you will use the
+variable that you created.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">Rojas.pkg</span><span class="op">)</span></span>
+<span><span class="va">columns</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Follicles"</span>, <span class="st">"Note"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/remove_nas.html">remove_nas</a></span><span class="op">(</span><span class="va">Data_RojasC</span>, <span class="va">columns</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 44 × 8</span></span></span>
+<span><span class="co">##    ID     DATE                  VTG E2        Testosterone   BHB Follicles Note </span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> HA4819 2013-03-07 <span style="color: #949494;">00:00:00</span>  35.5 <span style="color: #949494;">&lt;dbl [1]&gt;</span>         915.  0.66 Y         Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> HA4845 2011-03-08 <span style="color: #949494;">00:00:00</span>  58.4 <span style="color: #949494;">&lt;dbl [1]&gt;</span>         840.  1.12 Y         Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> HA4872 2013-03-04 <span style="color: #949494;">00:00:00</span>  41.1 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>022   1.33 Y         Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> W1827  2023-03-05 <span style="color: #949494;">00:00:00</span>  26.6 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>453   1.05 NA        Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> W1833  2003-03-05 <span style="color: #949494;">00:00:00</span>  34.2 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">3</span>321   0.89 NA        Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> W1847  2003-03-04 <span style="color: #949494;">00:00:00</span>  57.8 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>442   0.69 NA        Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> W1899  2003-03-06 <span style="color: #949494;">00:00:00</span>  21.5 <span style="color: #949494;">&lt;dbl [1]&gt;</span>         279   0.4  NA        Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> W1990  2004-03-10 <span style="color: #949494;">00:00:00</span>  23.4 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>892   1.55 NA        Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> X5936  2003-03-06 <span style="color: #949494;">00:00:00</span>  15.1 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>918   0.92 NA        Grav…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> X5969  2003-03-05 <span style="color: #949494;">00:00:00</span>  11.2 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>813   0.71 NA        Grav…</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 34 more rows</span></span></span></code></pre>
+<p>#Selecting and manipulated the data</p>
+<p>The second function is for selecting specific data columns. This
+function is called Select and it requires the data and the columns that
+you wish to select. You will run the function and you will need to
+create a variable called “columns” and include the data that you wish to
+select using quotation marks. At the end to run the function you will
+use the variable that you created. This function will show you the data
+that you select.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">Rojas.pkg</span><span class="op">)</span></span>
+<span><span class="va">columns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"VTG"</span>, <span class="st">"E2"</span>, <span class="st">"Testosterone"</span>, <span class="st">"BHB"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/Select_data.html">Select_data</a></span> <span class="op">(</span><span class="va">Data_RojasC</span>, <span class="va">columns</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 44 × 4</span></span></span>
+<span><span class="co">##      VTG E2        Testosterone   BHB</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>  35.5 <span style="color: #949494;">&lt;dbl [1]&gt;</span>         915.  0.66</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>  58.4 <span style="color: #949494;">&lt;dbl [1]&gt;</span>         840.  1.12</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>  41.1 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>022   1.33</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>  26.6 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>453   1.05</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>  34.2 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">3</span>321   0.89</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>  57.8 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>442   0.69</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>  21.5 <span style="color: #949494;">&lt;dbl [1]&gt;</span>         279   0.4 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>  23.4 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>892   1.55</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>  15.1 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>918   0.92</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>  11.2 <span style="color: #949494;">&lt;dbl [1]&gt;</span>        <span style="text-decoration: underline;">1</span>813   0.71</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 34 more rows</span></span></span></code></pre>
+<p>#Statistical Analysis with a linear model</p>
+<p>The third function is used to make a linear model statistical
+analysis. This function is called Linear_model in order to work you must
+have numerical data in your data set. If you have character data after
+you run the function you will have a message “Ziggy”. Also, after
+running the function you should select the predictor (column_2) and the
+response variable (column_1). The function will show you a linear model
+as a result. Remember to use quotation marks.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">Rojas.pkg</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/model_ln.html">model_ln</a></span><span class="op">(</span><span class="va">Data_RojasC</span>, <span class="st">"VTG"</span>, <span class="st">"BHB"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## Call:</span></span>
+<span><span class="co">## lm(formula = Turtle_hormone, data = data)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Residuals:</span></span>
+<span><span class="co">##     Min      1Q  Median      3Q     Max </span></span>
+<span><span class="co">## -22.858  -4.965  -2.123   4.019  41.661 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span><span class="co">## (Intercept)   -8.082      3.408  -2.371   0.0224 *  </span></span>
+<span><span class="co">## BHB           35.045      5.352   6.548 6.47e-08 ***</span></span>
+<span><span class="co">## ---</span></span>
+<span><span class="co">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Residual standard error: 11.16 on 42 degrees of freedom</span></span>
+<span><span class="co">## Multiple R-squared:  0.5052, Adjusted R-squared:  0.4934 </span></span>
+<span><span class="co">## F-statistic: 42.87 on 1 and 42 DF,  p-value: 6.467e-08</span></span></code></pre>
+<p>#Plotting a bar graph</p>
+<p>The fourth function is used to plot a bar graph. This function is
+called Bar_plot. In order to work you should make sure that your
+column_1 is numeric. If you are using character data in column_1 the
+function with let you know by showing an error message after you run it.
+This function will show you a bar graph with the data that you
+selected.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">Rojas.pkg</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/Plot.html">Plot</a></span><span class="op">(</span><span class="va">Data_RojasC</span>, <span class="st">"BHB"</span>, <span class="st">"Note"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="HormonesTutorial_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<p>#Ploting a graph for the visialization of the data</p>
+<p>Function five plot a graph that allows us to compare the relationship
+between hormones by using gravid and non-gravid females. This function
+is called Plot_two. In order for the function to work two columns should
+be numerical and one characteristic data. the column_1 should be
+numerical if you include characteristic data this function will print
+the word “turtle”. This function will show the relationship between two
+hormone concentrations in gravid and non-gravid turtles.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">Rojas.pkg</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/Plot_two.html">Plot_two</a></span><span class="op">(</span><span class="va">Data_RojasC</span>, <span class="st">"VTG"</span>, <span class="st">"BHB"</span>, <span class="st">"Note"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="HormonesTutorial_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<p>#Filtering and compare specific data</p>
+<p>Function six is used to filter specific data selected. This function
+is called Filter and it requires the data and the columns that you wish
+to filter. This function will show you the data that you filter in
+detail without including other data. Also, this function works to
+compare two sets of data in this case two hormone concentrations.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">Rojas.pkg</span><span class="op">)</span></span>
+<span><span class="va">columns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"VTG"</span>, <span class="st">"E2"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/filter_H.html">filter_H</a></span><span class="op">(</span><span class="va">Data_RojasC</span>, <span class="va">columns</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 44 × 2</span></span></span>
+<span><span class="co">##      VTG E2       </span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>  35.5 <span style="color: #949494;">&lt;dbl [1]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>  58.4 <span style="color: #949494;">&lt;dbl [1]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>  41.1 <span style="color: #949494;">&lt;dbl [1]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>  26.6 <span style="color: #949494;">&lt;dbl [1]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>  34.2 <span style="color: #949494;">&lt;dbl [1]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>  57.8 <span style="color: #949494;">&lt;dbl [1]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>  21.5 <span style="color: #949494;">&lt;dbl [1]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>  23.4 <span style="color: #949494;">&lt;dbl [1]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>  15.1 <span style="color: #949494;">&lt;dbl [1]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>  11.2 <span style="color: #949494;">&lt;dbl [1]&gt;</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 34 more rows</span></span></span></code></pre>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
