@@ -115,19 +115,19 @@ library(tidyverse)
 install.packages ("googlesheets4")
 library(googlesheets4)
 googlesheets4::gs4_deauth()
-Data_RojasC_1_ <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
+Data_RojasC <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
 ```
 
 
 #Usage 
 
-For this package, you will need to download the data spreadsheet called "Data_RojasC_1_". The data set is included in Google Drive, to download it you will need to install the package "googlesheets4". To import the data set you will need to use the variable "hormones" to read the data, after that, you will be able to see the data by adding again the word "Data_RojasC_1_".  You can use this package with your own data only remember to organize your data and save it as a comma-separated values (csv) document. To import your data you need to add them first on Google Drive. After that in the R console, you will create a variable and paste the link from your Google Drive data to the console. You will be able to access your data after that by using the name of the variable for your data.
+For this package, you will need to download the data spreadsheet called "Data_RojasC". The data set is included in Google Drive, to download it you will need to install the package "googlesheets4". To import the data set you will need to use the variable "hormones" to read the data, after that, you will be able to see the data by adding again the word "Data_RojasC".  You can use this package with your own data only remember to organize your data and save it as a comma-separated values (csv) document. To import your data you need to add them first on Google Drive. After that in the R console, you will create a variable and paste the link from your Google Drive data to the console. You will be able to access your data after that by using the name of the variable for your data.
 
 ```{r}
 install.packages ("googlesheets4")
 library(googlesheets4)
 googlesheets4::gs4_deauth()
-Data_RojasC_1_ <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
+Data_RojasC <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
 ```
 
 
@@ -135,39 +135,39 @@ Data_RojasC_1_ <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS4
 
 ```{r}
 columns <- c("Follicles", "Note")
-remove_nas(Data_RojasC_1_, columns)
+remove_nas(Data_RojasC, columns)
 ```
 
 #Selecting and manipulated the data 
 
 ```{r}
 columns <- c("VTG", "E2", "Testosterone", "BHB")
-Select_data (Data_RojasC_1_, columns)
+Select_data (Data_RojasC, columns)
 ```
 
 #Statistical Analysis with a linear model
 
 ```{r}
-model_ln(Data_RojasC_1_, "VTG", "BHB")
+model_ln(Data_RojasC, "VTG", "BHB")
 ```
 
 #Plotting a bar graph
 
 ```{r}
-Plot(Data_RojasC_1_, "BHB", "Note")
+Plot(Data_RojasC, "BHB", "Note")
 ```
 
 #Ploting a graph for the visialization of the data
 
 ```{r}
-Plot_two(Data_RojasC_1_, "VTG", "BHB", "Note")
+Plot_two(Data_RojasC, "VTG", "BHB", "Note")
 ```
 
 #Filtering and compare specific data
 
 ```{r}
 columns <- c("VTG", "E2")
-filter_H(Data_RojasC_1_, columns)
+filter_H(Data_RojasC, columns)
 ```
 
 If you want to know more about this package you can go to this link in github
