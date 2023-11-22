@@ -38,7 +38,7 @@ The first function of this hormone package is a function that cleans the data by
 
 
 ```{r}
-library (Rojas.pkg)
+library(Rojas.pkg)
 columns <- c("Follicles", "Note")
 remove_nas(Data_RojasC_1_, columns)
 ```
@@ -48,7 +48,7 @@ remove_nas(Data_RojasC_1_, columns)
 The second function is for selecting specific data columns. This function is called Select and it requires the data and the columns that you wish to select. You will run the function and you will need to create a variable called "columns" and include the data that you wish to select using quotation marks. At the end to run the function you will use the variable that you created. This function will show you the data that you select. 
 
 ```{r}
-library (Rojas.pkg)
+library(Rojas.pkg)
 columns <- c("VTG", "E2", "Testosterone", "BHB")
 Select_data (Data_RojasC_1_, columns)
 ```
@@ -67,7 +67,7 @@ model_ln(Data_RojasC_1_, "VTG", "BHB")
 The fourth function is used to plot a bar graph. This function is called Bar_plot. In order to work you should make sure that your column_1 is numeric. If you are using character data in column_1 the function with let you know by showing an error message after you run it. This function will show you a bar graph with the data that you selected. 
 
 ```{r}
-library (Rojas.pkg)
+library(Rojas.pkg)
 Plot(Data_RojasC_1_, "BHB", "Note")
 ```
 
@@ -76,7 +76,7 @@ Plot(Data_RojasC_1_, "BHB", "Note")
 Function five plot a graph that allows us to compare the relationship between hormones by using gravid and non-gravid females. This function is called Plot_two. In order for the function to work two columns should be numerical and one characteristic data. the column_1 should be numerical if you include characteristic data this function will print the word "turtle". This function will show the relationship between two hormone concentrations in gravid and non-gravid turtles.  
 
 ```{r}
-library (Rojas.pkg)
+library(Rojas.pkg)
 Plot_two(Data_RojasC_1_, "VTG", "BHB", "Note")
 ```
 
@@ -85,7 +85,7 @@ Plot_two(Data_RojasC_1_, "VTG", "BHB", "Note")
 Function six is used to filter specific data selected. This function is called Filter and it requires the data and the columns that you wish to filter. This function will show you the data that you filter in detail without including other data. Also, this function works to compare two sets of data in this case two hormone concentrations. 
 
 ```{r}
-library (Rojas.pkg)
+library(Rojas.pkg)
 columns <- c("VTG", "E2")
 filter_H(Data_RojasC_1_, columns)
 ```
