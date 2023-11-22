@@ -39,7 +39,7 @@ The first function of this hormone package is a function that cleans the data by
 
 ```{r}
 library(Rojas.pkg)
-columns <- c("Follicles","Note")
+columns <-c("Follicles", "Note")
 remove_nas(Data_RojasC, columns)
 ```
 
