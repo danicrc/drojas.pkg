@@ -115,19 +115,19 @@ library(tidyverse)
 install.packages ("googlesheets4")
 library(googlesheets4)
 googlesheets4::gs4_deauth()
-hormones <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
+Data_RojasC_1_ <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
 ```
 
 
 #Usage 
 
-For this package, you will need to download the data spreadsheet called "Data_RojasC_1_". The data set is included in Google Drive, to download it you will need to install the package "googlesheets4". To import the data set you will need to use the variable "hormones" to read the data, after that, you will be able to see the data by adding again the word "hormones".  You can use this package with your own data only remember to organize your data and save it as a comma-separated values (csv) document. To import your data you need to add them first on Google Drive. After that in the R console, you will create a variable and paste the link from your Google Drive data to the console. You will be able to access your data after that by using the name of the variable for your data.
+For this package, you will need to download the data spreadsheet called "Data_RojasC_1_". The data set is included in Google Drive, to download it you will need to install the package "googlesheets4". To import the data set you will need to use the variable "hormones" to read the data, after that, you will be able to see the data by adding again the word "Data_RojasC_1_".  You can use this package with your own data only remember to organize your data and save it as a comma-separated values (csv) document. To import your data you need to add them first on Google Drive. After that in the R console, you will create a variable and paste the link from your Google Drive data to the console. You will be able to access your data after that by using the name of the variable for your data.
 
 ```{r}
 install.packages ("googlesheets4")
 library(googlesheets4)
 googlesheets4::gs4_deauth()
-hormones <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
+Data_Rojas_1_ <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
 ```
 
 

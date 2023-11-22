@@ -7,9 +7,9 @@
 filter_H(data, columns)
 }
 \arguments{
-\item{data}{in the date is expecting that each hormone is in each column}
+\item{data}{must be a data set that contains character data. Hormone data should be organized in each column.}
 
-\item{columns}{include the hormones that you will be selecting for the function}
+\item{columns}{include the hormones that you will be selecting for the function. You can include the hormones that you want to filtering.}
 }
 \value{
 filter columns with the concentration of VTG and E2 (numeric)

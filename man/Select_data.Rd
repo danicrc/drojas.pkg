@@ -2,14 +2,14 @@
 % Please edit documentation in R/Select.R
 \name{Select_data}
 \alias{Select_data}
-\title{This function is for select specific data}
+\title{This function is for select specific data from the data set.}
 \usage{
 Select_data(data, columns)
 }
 \arguments{
 \item{data}{must be a data set that contains numeric values in some columns.}
 
-\item{columns}{include the hormones that you will be selecting for the function}
+\item{columns}{include the hormones that you will be selecting for the function. You could choose the hormones that you want.}
 }
 \value{
 columns with the concentration of the hormones (numeric)
