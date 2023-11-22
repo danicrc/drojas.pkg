@@ -127,7 +127,7 @@ For this package, you will need to download the data spreadsheet called "Data_Ro
 install.packages ("googlesheets4")
 library(googlesheets4)
 googlesheets4::gs4_deauth()
-Data_Rojas_1_ <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
+Data_RojasC_1_ <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
 ```
 
 

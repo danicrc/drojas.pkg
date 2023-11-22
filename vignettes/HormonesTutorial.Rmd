@@ -15,7 +15,7 @@ This package is used for analyzing hormone data.
 devtools::install_github("danicrc/drojas.pkg")
 #install.packages(tidyverse)
 #install.packages(ggplot2)
-library (tidyverse)
+library(tidyverse)
 library(ggplot2)
 ```
 
@@ -25,7 +25,7 @@ In this tutorial, we will be using the sea turtle hormone data collected from gr
 #install.packages ("googlesheets4")
 library(googlesheets4)
 googlesheets4::gs4_deauth()
-Data_RojasC_1_<- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
+Data_RojasC <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
 ```
 
 You can use this package to study the concentration of hormones in one organism and understand the relationship between them. For the package, I use the hormone concentration of sea turtles gravid and no-gravid. The hormone data should be organized in a Google spreadsheet, and each column should have the hormone concentration separately.
@@ -39,8 +39,8 @@ The first function of this hormone package is a function that cleans the data by
 
 ```{r}
 library(Rojas.pkg)
-columns <- c("Follicles", "Note")
-remove_nas(Data_RojasC_1_, columns)
+columns <- c("Follicles","Note")
+remove_nas(Data_RojasC, columns)
 ```
 
 #Selecting and manipulated the data 
@@ -50,7 +50,7 @@ The second function is for selecting specific data columns. This function is cal
 ```{r}
 library(Rojas.pkg)
 columns <- c("VTG", "E2", "Testosterone", "BHB")
-Select_data (Data_RojasC_1_, columns)
+Select_data (Data_RojasC, columns)
 ```
 
 #Statistical Analysis with a linear model
@@ -59,7 +59,7 @@ The third function is used to make a linear model statistical analysis. This fun
 
 ```{r}
 library(Rojas.pkg)
-model_ln(Data_RojasC_1_, "VTG", "BHB")
+model_ln(Data_RojasC, "VTG", "BHB")
 ```
 
 #Plotting a bar graph
@@ -68,7 +68,7 @@ The fourth function is used to plot a bar graph. This function is called Bar_plo
 
 ```{r}
 library(Rojas.pkg)
-Plot(Data_RojasC_1_, "BHB", "Note")
+Plot(Data_RojasC, "BHB", "Note")
 ```
 
 #Ploting a graph for the visialization of the data
@@ -77,7 +77,7 @@ Function five plot a graph that allows us to compare the relationship between ho
 
 ```{r}
 library(Rojas.pkg)
-Plot_two(Data_RojasC_1_, "VTG", "BHB", "Note")
+Plot_two(Data_RojasC, "VTG", "BHB", "Note")
 ```
 
 #Filtering and compare specific data
@@ -87,5 +87,5 @@ Function six is used to filter specific data selected. This function is called F
 ```{r}
 library(Rojas.pkg)
 columns <- c("VTG", "E2")
-filter_H(Data_RojasC_1_, columns)
+filter_H(Data_RojasC, columns)
 ```
