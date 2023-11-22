@@ -22,10 +22,11 @@ library(ggplot2)
 In this tutorial, we will be using the sea turtle hormone data collected from gravid and non-gravid loggerhead turtles.
 
 ```{r, eval=FALSE}
-#install.packages ("googlesheets4")
+#install.packages("googlesheets4")
 library(googlesheets4)
 googlesheets4::gs4_deauth()
 Data_RojasC <- read_sheet("https://docs.google.com/spreadsheets/d/1X8VwD7pLS437uzxXK2OaZDiklGRgoYlYfCu3BsmlO5s/edit?usp=sharing")
+Data_RojasC
 ```
 
 You can use this package to study the concentration of hormones in one organism and understand the relationship between them. For the package, I use the hormone concentration of sea turtles gravid and no-gravid. The hormone data should be organized in a Google spreadsheet, and each column should have the hormone concentration separately.
